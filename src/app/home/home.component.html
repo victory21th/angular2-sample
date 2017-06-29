@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="news-list">
+        <div class="item" *ngFor="let item of news; let i = index" [ngClass]="{'selected':item.selected}" (click)="viewNews(item)">
+            <img src="{{item.thumbUrl}}"/>
+            <h4>{{item.title}}</h4>
+            <p>{{item.modDate}}</p>
+        </div>
+    </div>
+    <div class="news-content" *ngIf="selectedNews">
+        <div class="img-box">
+            <img src="{{selectedNews.imageUrl}}"/>
+
+            <div class="title-box">
+                <h4>{{selectedNews.title}}</h4>
+                <p>{{selectedNews.modDate}}</p>
+            </div>
+        </div>
+
+        <div class="story-box" [innerHTML]="selectedNews.story">
+        </div>
+    </div>
+</div>
